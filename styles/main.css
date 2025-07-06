@@ -1,0 +1,174 @@
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fceade;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  
+  .card {
+    background: #faf3e0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Default width */
+    max-width: 90%;
+    margin: auto;
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+
+  .card.expanded {
+    width: 600px;
+    height: auto; /* Allow the height to adjust dynamically */
+  }
+
+  .card-header {
+    display: flex; /* Flexbox layout */
+    /*align-items: flex-start; /* Align items at the start of the header */
+    gap: 20px; /* Space between the image and text */
+  }
+
+  /* Header Content Layout */
+  .card-header-content {
+    display: flex;
+    flex-direction: column; /* Stack name and description vertically */
+    justify-content: space-between; /* Space between name and description */
+    height: auto; /* Match the profile picture height */
+  }
+
+  .card-header-content h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    transition: font-size 0.6s ease; /* Only transition font-size */
+  }
+
+  .card-header-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+    transition: font-size 0.6s ease; /* Only transition font-size */
+  }
+  
+  .profile-pic {
+    width: 150px; /* Adjust size */
+    height: 150px;
+    border-radius: 5%; /* Make it circular */
+    object-fit: cover; /* Maintain aspect ratio */
+  }
+
+  .highlight {
+    font-style: italic;
+    font-weight: 600;
+    color: #d35400;
+  }
+  
+  /* Links Section Styling */
+  .card-links {
+    margin-top: 20px; /* Add space below the header */
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    /*align-items: flex-start; /* Align links to the left */
+    gap: 5px; /* Add space between each link */
+  }
+  
+  .card-links a {
+    text-decoration: none;
+    color: #F77F00;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 90%; /* Make links span the full width */
+  }
+  
+  .card-links a:hover {
+    color: #FFC300;
+  }
+
+  .card-links h3 {
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 90%; /* Make links span the full width */
+  }
+
+  .card-links h5 {
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 90%; /* Make links span the full width */
+  }
+
+  .card-links p {
+    padding: 0px 10px;
+    margin: 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 90%; /* Make links span the full width */
+  }
+
+  /* Dynamic Section Content Styling */
+  .section-content {
+    max-height: 0; /* Hidden by default */
+    overflow-y: hidden; /* Prevent scrolling during animation */
+    opacity: 0; /* Start invisible */
+    transition: max-height 0.5s ease, opacity 0.5s ease; /* Smooth expand and fade-in */
+  }
+  
+  .section-content.active {
+    max-height: 200px; /* Limit height for larger content */
+    overflow-y: auto; /* Enable scrolling for large content */
+    opacity: 1; /* Fully visible */
+  }
+  
+  /* General Contact Section Styles */
+  .contact-list {
+    list-style: none;
+    padding: 0;
+  }
+
+.contact-list .contact-item {
+  text-decoration: none; /* Reset inherited styles */
+  color: #333; /* Default text color */
+  font-size: 1.5rem; /* Icon size */
+}
+
+.contact-list .contact-item:hover {
+  color: #f77f00; /* Hover effect for icons */
+}
+
+.contact-list .contact-item i {
+  font-size: 1.8rem; /* Icon size */
+  width: 40px; /* Ensure consistent width for all icons */
+  text-align: center; /* Center-align icon within its space */
+}
+
+/* Non-Link Text Styling */
+.contact-list span {
+  font-size: 1.2rem; /* Text size */
+  color: #333; /* Text color */
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  body {
+    align-items: flex-start; /* Align content to the top */
+  }
+
+  .card {
+    width: 100%; /* Always full width on mobile */
+    max-width: 100%; /* Ensure it doesn't shrink below full width */
+    margin-top: 10px;
+  }
+
+  .card.expanded {
+    width: 100%; /* Prevent expansion on mobile */
+    max-width: 100%;
+  }
+}

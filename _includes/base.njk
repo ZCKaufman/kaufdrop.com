@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title | default("Zachary Kaufman") }}</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <script src="/scripts/main.js" defer></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/63b8ee2507.js" crossorigin="anonymous"></script></head>
+<body>
+  <div class="container">
+    <header>
+      <h1>{{ title }}</h1>
+    </header>
+    <main>
+      {{ content | safe }}
+    </main>
+  </div>
+</body>
+</html>
