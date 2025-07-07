@@ -1,0 +1,1162 @@
+/* ================================
+   CSS Variables & Color Scheme
+   ================================ */
+   :root {
+    /* Charcoal Dark Theme */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --bg-tertiary: #3a3a3a;
+    --surface-primary: #2d2d2d;
+    --surface-elevated: #383838;
+    --surface-overlay: #404040;
+    
+    /* Neural-inspired Accent Colors */
+    --neural-blue: #4FC3F7;
+    --neural-cyan: #00E5FF;
+    --neural-purple: #9C27B0;
+    --neural-pink: #E91E63;
+    --neural-orange: #FF9800;
+    
+    /* Primary Brand Colors */
+    --primary-blue: #2196F3;
+    --accent-teal: #00BCD4;
+    --success-green: #4CAF50;
+    
+    /* Text Colors */
+    --text-primary: #E8E8E8;
+    --text-secondary: #B8B8B8;
+    --text-muted: #888888;
+    --text-highlight: var(--neural-cyan);
+    
+    /* Border & Divider Colors */
+    --border-subtle: #404040;
+    --border-medium: #505050;
+    --border-accent: var(--neural-blue);
+    
+    /* Gradients */
+    --gradient-neural: linear-gradient(135deg, var(--neural-blue) 0%, var(--neural-cyan) 50%, var(--neural-purple) 100%);
+    --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+    --gradient-surface: linear-gradient(145deg, var(--surface-primary) 0%, var(--surface-elevated) 100%);
+    
+    /* Shadows */
+    --shadow-neural: 0 4px 20px rgba(79, 195, 247, 0.2);
+    --shadow-glow: 0 0 20px rgba(0, 229, 255, 0.3);
+    --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.2);
+    --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.4);
+    
+    /* Animation Timings */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s ease;
+    --transition-slow: 0.6s ease;
+    --transition-neural: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================
+   Reset & Base Styles
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ================================
+   Neural Network Background
+   ================================ */
+.neural-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.neural-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.neural-node {
+    fill: var(--neural-blue);
+    filter: drop-shadow(0 0 8px var(--neural-cyan));
+    animation: neuralPulse 3s ease-in-out infinite;
+}
+
+.neural-connection {
+    stroke: var(--neural-cyan);
+    stroke-width: 1;
+    fill: none;
+    opacity: 0.4;
+    filter: drop-shadow(0 0 4px var(--neural-cyan));
+}
+
+.neural-connection.active {
+    stroke: var(--neural-pink);
+    stroke-width: 2;
+    opacity: 0.8;
+    animation: synapticFire 1.5s ease-out;
+}
+
+/* ================================
+   Neural Animations
+   ================================ */
+@keyframes neuralPulse {
+    0%, 100% { 
+        r: 3;
+        opacity: 0.6;
+    }
+    50% { 
+        r: 5;
+        opacity: 1;
+    }
+}
+
+@keyframes synapticFire {
+    0% {
+        stroke-dasharray: 0 1000;
+        opacity: 1;
+    }
+    50% {
+        stroke-dasharray: 500 1000;
+        opacity: 0.8;
+    }
+    100% {
+        stroke-dasharray: 1000 1000;
+        opacity: 0.4;
+    }
+}
+
+@keyframes neuronGrowth {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+        filter: blur(4px);
+    }
+    50% {
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes dendriteBranch {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+/* ================================
+   Main Container
+   ================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+}
+
+/* ================================
+   Hero Section
+   ================================ */
+.hero-section {
+    background: var(--gradient-surface);
+    border-radius: 24px;
+    padding: 3rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-strong);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-neural);
+    animation: dendriteBranch 2s ease-out;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+/* ================================
+   Profile Picture Section
+   ================================ */
+.profile-container {
+    position: relative;
+}
+
+.profile-wrapper {
+    position: relative;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 3px solid var(--neural-blue);
+    box-shadow: var(--shadow-neural);
+    transition: all var(--transition-medium);
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--neural-cyan);
+}
+
+.profile-pic.loading {
+    opacity: 0.7;
+    transform: scale(0.98);
+}
+
+.neural-firing-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+}
+
+.neural-firing-overlay.active {
+    opacity: 1;
+    animation: neuralFiring 1.5s ease-out;
+}
+
+@keyframes neuralFiring {
+    0% {
+        background: radial-gradient(circle at 50% 50%, var(--neural-cyan) 0%, transparent 0%);
+    }
+    25% {
+        background: radial-gradient(circle at 50% 50%, var(--neural-cyan) 20%, transparent 25%);
+    }
+    50% {
+        background: radial-gradient(circle at 50% 50%, var(--neural-pink) 40%, transparent 50%);
+    }
+    75% {
+        background: radial-gradient(circle at 50% 50%, var(--neural-purple) 60%, transparent 70%);
+    }
+    100% {
+        background: radial-gradient(circle at 50% 50%, transparent 80%, transparent 100%);
+    }
+}
+
+.profile-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: var(--gradient-neural);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-subtle);
+    border: 2px solid var(--surface-primary);
+}
+
+/* ================================
+   Hero Text Content
+   ================================ */
+.hero-text {
+    flex: 1;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    background: var(--gradient-neural);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neuronGrowth var(--transition-neural) ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-weight: 400;
+    animation: neuronGrowth var(--transition-neural) ease-out 0.2s both;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    animation: neuronGrowth var(--transition-neural) ease-out 0.4s both;
+}
+
+.elevator-pitch {
+    background: var(--surface-elevated);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--neural-cyan);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-subtle);
+    animation: neuronGrowth var(--transition-neural) ease-out 0.6s both;
+}
+
+.elevator-pitch h3 {
+    color: var(--neural-cyan);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ================================
+   Navigation Tabs
+   ================================ */
+.nav-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    background: var(--surface-primary);
+    padding: 0.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-subtle);
+    border: 1px solid var(--border-subtle);
+}
+
+.nav-tab {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-neural);
+    transition: left var(--transition-medium);
+    z-index: -1;
+}
+
+.nav-tab.active::before {
+    left: 0;
+}
+
+.nav-tab.active {
+    color: white;
+    box-shadow: var(--shadow-neural);
+}
+
+.nav-tab:hover:not(.active) {
+    background: var(--surface-elevated);
+    color: var(--neural-cyan);
+    transform: translateY(-2px);
+}
+
+/* ================================
+   Content Sections
+   ================================ */
+.content-sections {
+    position: relative;
+}
+
+.content-section {
+    background: var(--gradient-surface);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-strong);
+    border: 1px solid var(--border-subtle);
+    display: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-section.active {
+    display: block;
+    animation: neuronGrowth var(--transition-slow) ease-out;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gradient-neural);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--neural-blue);
+    margin: 2rem 0 1rem 0;
+    position: relative;
+}
+
+.section-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--gradient-neural);
+    animation: dendriteBranch 1s ease-out;
+}
+
+.section-subheading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--neural-purple);
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.highlight {
+    color: var(--text-highlight);
+    font-weight: 500;
+}
+
+/* ================================
+   About Section - Life Dimensions
+   ================================ */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--surface-elevated);
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--neural-blue) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+    z-index: 0;
+}
+
+.stat-card:hover::before {
+    opacity: 0.08;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-neural);
+    border-color: var(--neural-blue);
+}
+
+.stat-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all var(--transition-medium);
+}
+
+.stat-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.dimension-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-neural);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-neural);
+}
+
+.dimension-icon i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.dimension-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ================================
+   Research Section - Goals & Projects
+   ================================ */
+.research-goals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.goal-card {
+    background: var(--surface-elevated);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.goal-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--neural-blue) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+    z-index: 0;
+}
+
+.goal-card:hover::before {
+    opacity: 0.08;
+}
+
+.goal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-neural);
+    border-color: var(--neural-blue);
+}
+
+.goal-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all var(--transition-medium);
+}
+
+.goal-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.goal-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-neural);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-neural);
+}
+
+.goal-icon i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.goal-card h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.goal-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.research-projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.project-card {
+    background: var(--surface-elevated);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--neural-blue) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+    z-index: 0;
+}
+
+.project-card:hover::before {
+    opacity: 0.08;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-neural);
+    border-color: var(--neural-blue);
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all var(--transition-medium);
+}
+
+.project-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.project-header {
+    margin-bottom: 1rem;
+}
+
+.project-header h4 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.project-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.field-tag {
+    background: var(--surface-overlay);
+    color: var(--text-secondary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--border-medium);
+    transition: all var(--transition-fast);
+}
+
+.field-tag:hover {
+    background: var(--gradient-neural);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.collab-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--gradient-neural);
+    color: white;
+    box-shadow: var(--shadow-neural);
+    animation: neuralPulse 2s ease-in-out infinite;
+}
+
+.project-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ================================
+   Lab Information Tags
+   ================================ */
+.lab-info {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.lab-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--surface-overlay);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid var(--border-medium);
+    transition: all var(--transition-medium);
+}
+
+.lab-tag:hover {
+    background: var(--gradient-neural);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-neural);
+    border-color: transparent;
+}
+
+.lab-tag i {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* ================================
+   Timeline
+   ================================ */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gradient-neural);
+    animation: dendriteBranch 2s ease-out;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    background: var(--surface-elevated);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-left: 1rem;
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-medium);
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.75rem;
+    top: 1.5rem;
+    width: 12px;
+    height: 12px;
+    background: var(--neural-cyan);
+    border-radius: 50%;
+    border: 3px solid var(--surface-primary);
+    box-shadow: 0 0 10px var(--neural-cyan);
+    animation: neuralPulse 2s ease-in-out infinite;
+}
+
+.timeline-item:hover {
+    transform: translateX(0) translateY(-2px);
+    box-shadow: var(--shadow-neural);
+    border-color: var(--neural-blue);
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all var(--transition-medium);
+}
+
+/* ================================
+   Contact Section
+   ================================ */
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    background: var(--gradient-neural);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-subtle);
+    flex-shrink: 0;
+}
+
+.contact-info strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+}
+
+.contact-info div {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}-intro {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem auto 0 auto;
+    max-width: 800px;
+    justify-items: center;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--surface-elevated);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all var(--transition-medium);
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    width: 100%;
+    max-width: 350px;
+    min-width: 300px;
+}
+
+.contact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-neural);
+    transition: left var(--transition-medium);
+    z-index: 0;
+}
+
+.contact-item:hover::before {
+    left: 0;
+}
+
+.contact-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-neural);
+    color: white;
+}
+
+.contact-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all var(--transition-medium);
+}
+
+.contact-item > * {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-neural);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-subtle);
+}
+
+.contact-info strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+}
+
+.contact-info div {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ================================
+   Neural Cascade Effect
+   ================================ */
+.cascade-ripple {
+    position: absolute;
+    border: 2px solid var(--neural-cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: cascadeRipple 2s ease-out;
+}
+
+.cascade-connection {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neural-pink), transparent);
+    pointer-events: none;
+    animation: cascadeConnection 1.5s ease-out;
+}
+
+@keyframes cascadeRipple {
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 1;
+        border-width: 3px;
+    }
+    100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+        border-width: 1px;
+    }
+}
+
+@keyframes cascadeConnection {
+    0% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(1);
+    }
+}
+
+/* ================================
+   Responsive Design Updates
+   ================================ */
+@media (max-width: 968px) {
+    .research-projects {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .nav-tabs {
+        flex-direction: column;
+    }
+
+    .nav-tab {
+        text-align: left;
+        justify-content: flex-start;
+    }
+
+    .research-projects {
+        grid-template-columns: 1fr;
+    }
+
+    .project-badges {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        padding-left: 1rem;
+    }
+
+    .timeline-item {
+        margin-left: 0.5rem;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 2rem;
+    }
+
+    .content-section {
+        padding: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    .research-projects {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+}
+
+/* ================================
+   Utility Classes
+   ================================ */
+.fade-in {
+    opacity: 0;
+    animation: neuronGrowth var(--transition-slow) ease-out forwards;
+}
+
+.glow {
+    box-shadow: var(--shadow-glow);
+}
+
+.neural-border {
+    border: 2px solid var(--neural-blue);
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
+}
+
+/* ================================
+   Scrollbar Styling
+   ================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-neural);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neural-cyan);
+}
+
+/* ================================
+   Selection Styling
+   ================================ */
+::selection {
+    background: var(--neural-cyan);
+    color: var(--bg-primary);
+}
+
+::-moz-selection {
+    background: var(--neural-cyan);
+    color: var(--bg-primary);
+}
