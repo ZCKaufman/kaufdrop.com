@@ -206,7 +206,7 @@
 
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
-                if (e.key >= '1' && e.key <= '3') {
+                if (e.key >= '1' && e.key <= '4') {
                     const tabIndex = parseInt(e.key) - 1;
                     if (this.tabs[tabIndex]) {
                         this.switchSection(this.tabs[tabIndex]);

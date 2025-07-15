@@ -427,6 +427,7 @@ body {
     display: none;
     position: relative;
     overflow: hidden;
+    opacity: 95%;
 }
 
 .content-section.active {
